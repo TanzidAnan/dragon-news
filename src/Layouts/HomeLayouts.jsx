@@ -3,8 +3,10 @@ import Header from "../Compontens/Header";
 const HomeLayouts = () => {
     return (
         <div>
-            <Header></Header>
-            
+            <header>
+                <Header></Header>
+            </header>
+
         </div>
     );
 };
