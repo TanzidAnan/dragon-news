@@ -7,7 +7,15 @@ const Routes = createBrowserRouter([
     },
     {
         path:'/news',
-        element:<
+        element:<h1>News layout</h1>
+    },
+    {
+        path:'/login',
+        element:<h1>Login page</h1>
+    },
+    {
+        path:'*',
+        element:<h1>error</h1>
     }
 ])
 export default Routes;
