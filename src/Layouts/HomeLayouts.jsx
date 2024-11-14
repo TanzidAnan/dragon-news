@@ -1,5 +1,6 @@
 import Header from "../Compontens/Header";
 import LeftNavber from "../Compontens/layout-compontents/LeftNavber";
+import RightNavber from "../Compontens/layout-compontents/RightNavber";
 import LetesNews from "../Compontens/LetesNews";
 import Navber from "../Compontens/Navber";
 
@@ -23,7 +24,9 @@ const HomeLayouts = () => {
                     <LeftNavber></LeftNavber>
                 </aside>
                 <section className="col-span-6">main contents</section>
-                <aside className="col-span-3">Right </aside>
+                <aside className="col-span-3">
+                    <RightNavber></RightNavber>
+                </aside>
             </main>
 
         </div>
