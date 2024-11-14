@@ -6,7 +6,7 @@ const Header = () => {
             <div className='logo'>
                 <img className='w-[400px]' src={logo} alt="" />
             </div>
-            <h1 className='text-gray-500'>Journalism Without Fear or Favour</h1>
+            <h1 className='text-gray-500 font-poppins'>Journalism Without Fear or Favour</h1>
             <p>{moment().format("dddd, MMMM Do YYYY, h:mm:ss a")}</p>
         </div>
     );
