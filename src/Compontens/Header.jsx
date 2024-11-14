@@ -5,6 +5,7 @@ const Header = () => {
             <div className='logo'>
                 <img className='w-[400px]' src={logo} alt="" />
             </div>
+            <h1 className='text-gray-500'>Journalism Without Fear or Favour</h1>
         </div>
     );
 };
