@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import HomeLayouts from "../Layouts/HomeLayouts";
 
 const Routes = createBrowserRouter([
@@ -6,6 +6,10 @@ const Routes = createBrowserRouter([
         path:'/',
         element:<HomeLayouts></HomeLayouts>,
         children:[
+            {
+                path:'/',
+                element:<Navigate to={"/category/01"}></Navigate>
+            },
             {
                 path:'/category/:id',
                 element:<h1>this is category</h1>
