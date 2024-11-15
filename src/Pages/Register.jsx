@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Register = () => {
-    const {createNewUser} =useContext(AuthContext)
+    const {createNewUser,setUser} =useContext(AuthContext)
 
     const hendleRegister =(e) =>{
         e.preventDefault()
@@ -22,7 +22,9 @@ const Register = () => {
 
         createNewUser(email,password)
         .then(result =>{
-            console.log(result.user)
+            const user =result.user
+            console.log(user);
+            setUser(user)
         })
         .catch(error =>{
             console.log(error.message)
