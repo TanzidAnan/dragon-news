@@ -11,7 +11,7 @@ const Navber = () => {
             </div>
             <div className="flex gap-4">
                 <img className="w-[40px] h-[7vh]" src={userIcon} alt="" />
-                <button className="btn btn-neutral rounded-none">Login</button>
+                <Link to='/auth/login' className="btn btn-neutral rounded-none">Login</Link>
             </div>
         </div>
     );
