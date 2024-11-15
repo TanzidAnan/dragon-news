@@ -34,10 +34,10 @@ const Register = () => {
                         </label>
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn btn-neutral">Login</button>
+                        <button className="btn btn-neutral">Register</button>
                     </div>
                 </form>
-                <p className="text-center font-semibold"> Dont’t Have An Account ? <Link to='/auth/login' className="text-red-700" >Register</Link></p>
+                <p className="text-center font-semibold"> Allrady have and Account ? <Link to='/auth/login' className="text-red-700" >Register</Link></p>
             </div>
         </div>
     );
