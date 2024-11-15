@@ -4,6 +4,7 @@ import CategoryNews from "../Pages/CategoryNews";
 import AuthLayout from "../Layouts/AuthLayout";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import ProvateRoutes from "./ProvateRoutes";
 
 const Routes = createBrowserRouter([
     {
@@ -16,13 +17,13 @@ const Routes = createBrowserRouter([
             },
             {
                 path:'/category/:id',
-                element:<CategoryNews></CategoryNews>,
+                element:<ProvateRoutes><CategoryNews></CategoryNews></ProvateRoutes>,
                 loader:({params}) =>fetch(`https://openapi.programming-hero.com/api/news/category/${params.id}`)
             }
         ]
     },
     {
-        path:'/news',
+        path:'/news/:id',
         element:<h1>News layout</h1>
     },
     {

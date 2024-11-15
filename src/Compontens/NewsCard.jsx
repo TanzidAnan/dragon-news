@@ -1,5 +1,6 @@
 import React from 'react';
 import { AiFillEye, AiOutlineHeart, AiOutlineShareAlt } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 const NewsCard = (props={}) => {
     const {news} =props || {}
@@ -26,7 +27,7 @@ const NewsCard = (props={}) => {
             </figure>
 
             {/* Details */}
-            <p className="text-sm text-gray-600">{news.details.substring(0, 150)}... <span className="text-primary cursor-pointer">Read More</span></p>
+            <p className="text-sm text-gray-600">{news.details.substring(0, 150)}... <Link to={`/news/${news._id}`} className="text-primary cursor-pointer">Read More</Link></p>
 
             {/* Rating and Views */}
             <div className="flex justify-between items-center mt-4">

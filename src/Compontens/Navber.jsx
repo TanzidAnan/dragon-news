@@ -15,7 +15,9 @@ const Navber = () => {
     }
     return (
         <div className="flex justify-between ">
-            <div className="">.</div>
+            <div className="">
+                {user?.email}
+            </div>
             <div className="nav flex gap-4">
                 <Link to='/'>Home</Link>
                 <Link to='/about'>about</Link>
