@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+
+
     return (
         <div className="min-h-[80vh] flex justify-center items-center ">
             <div className="card bg-base-100 w-full max-w-2xl shrink-0 rounded-none p-10">
