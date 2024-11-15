@@ -5,23 +5,28 @@ import app from "../firebase.confige";
 export const AuthContext =createContext()
 const AuthProvider = ({children}) => {
     const auth = getAuth(app);
-    const [user,setUser] =useState(null)
+    const [user,setUser] =useState(null);
+    const [loading,setLoading] =useState(true)
     console.log(user)
 
     const createNewUser =(email,password) =>{
+        setLoading(true)
         return createUserWithEmailAndPassword(auth,email,password)
     }
     const singInUser =(email,password) =>{
+        setLoading(true)
         return signInWithEmailAndPassword(auth,email,password)
     }
     const logOut =() =>{
+        setLoading(true)
         return signOut(auth)
     }
 
     useEffect(() =>{
         const unSubserct= onAuthStateChanged(auth, currentUser=>{
             if(currentUser){
-                setUser(currentUser)
+                setUser(currentUser);
+                setLoading(false)
             }
             else{
                 setUser(null)
@@ -36,7 +41,8 @@ const AuthProvider = ({children}) => {
         setUser,
         createNewUser,
         logOut,
-        singInUser
+        singInUser,
+        loading
     }
 
     return (

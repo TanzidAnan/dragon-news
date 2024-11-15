@@ -18,14 +18,14 @@ const Routes = createBrowserRouter([
             },
             {
                 path:'/category/:id',
-                element:<ProvateRoutes><CategoryNews></CategoryNews></ProvateRoutes>,
+                element:<CategoryNews></CategoryNews>,
                 loader:({params}) =>fetch(`https://openapi.programming-hero.com/api/news/category/${params.id}`)
             }
         ]
     },
     {
         path:'/news/:id',
-        element:<NewsDetles></NewsDetles>,
+        element:<ProvateRoutes><NewsDetles></NewsDetles></ProvateRoutes>,
         loader:({params}) => fetch(`https://openapi.programming-hero.com/api/news/${params.id}`)
     },
     {
