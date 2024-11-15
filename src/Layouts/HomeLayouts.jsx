@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import Header from "../Compontens/Header";
 import LeftNavber from "../Compontens/layout-compontents/LeftNavber";
 import RightNavber from "../Compontens/layout-compontents/RightNavber";
@@ -23,12 +24,14 @@ const HomeLayouts = () => {
                 <aside className="left col-span-3">
                     <LeftNavber></LeftNavber>
                 </aside>
-                <section className="col-span-6">main contents</section>
+                <section className="col-span-6">
+                <Outlet></Outlet>
+                </section>
                 <aside className="col-span-3">
                     <RightNavber></RightNavber>
                 </aside>
             </main>
-
+    
         </div>
     );
 };
