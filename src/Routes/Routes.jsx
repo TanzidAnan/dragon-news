@@ -1,5 +1,6 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import HomeLayouts from "../Layouts/HomeLayouts";
+import CategoryNews from "../Pages/CategoryNews";
 
 const Routes = createBrowserRouter([
     {
@@ -12,7 +13,8 @@ const Routes = createBrowserRouter([
             },
             {
                 path:'/category/:id',
-                element:<h1>this is category</h1>
+                element:<CategoryNews></CategoryNews>,
+                loader:({params}) =>fetch(`https://openapi.programming-hero.com/api/news/category/${params.id}`)
             }
         ]
     },
