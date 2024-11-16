@@ -1,26 +1,31 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
-    const {singInUser,setUser} =useContext(AuthContext)
+    const { singInUser, setUser } = useContext(AuthContext);
+    const [error, setError] = useState({})
+    const location = useLocation();
+    const navigate = useNavigate();
 
-    const hendleLogin =(e) =>{
+
+    const hendleLogin = (e) => {
         e.preventDefault()
-        const form =new FormData(e.target)
-        const email =form.get('email')
-        const password =form.get('password');
-        console.log(email,password)
+        const form = new FormData(e.target)
+        const email = form.get('email')
+        const password = form.get('password');
+        console.log(email, password)
 
-        singInUser(email,password)
-        .then(res =>{
-            console.log(res.user);
-            setUser(res.user)
-        })
-        .catch(error =>{
-            console.log(error.message);
-            setUser(null)
-        })
+        singInUser(email, password)
+            .then(res => {
+                console.log(res.user);
+                setUser(res.user);
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch(err => {
+                setUser(null);
+                setError({ ...error, Login: err.code })
+            })
     }
 
 
@@ -41,6 +46,15 @@ const Login = () => {
                             <span className="label-text">Password</span>
                         </label>
                         <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+
+                        {
+                            error.Login && (
+                                <label className="label text-sm text-red-600">
+                                   {error.Login}
+                                </label>
+                            )
+                        }
+
                         <label className="label">
                             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                         </label>

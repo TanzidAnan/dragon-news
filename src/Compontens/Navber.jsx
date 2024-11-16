@@ -23,8 +23,19 @@ const Navber = () => {
                 <Link to='/about'>about</Link>
                 <Link to='/career'>Career</Link>
             </div>
-            <div className="flex gap-4">
-                <img className="w-[40px] h-[7vh]" src={userIcon} alt="" />
+            <div className="flex gap-4 items-center">
+                <div className="">
+                    {
+                        user && user?.email ?(
+                            <>
+                            <img className="w-16 rounded-full" src={user?.photoURL} alt="" />
+                            </>
+                        ):(
+                            <img className="w-[40px] h-[7vh]" src={userIcon} alt="" />
+                        )
+                    }
+                </div>
+                
                 {
                     user && user.email?
                     <button onClick={hendleLogOut} className="btn btn-neutral rounded-none">Log-Out</button>

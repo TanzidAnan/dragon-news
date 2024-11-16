@@ -1,11 +1,13 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Register = () => {
-    const {createNewUser,setUser} =useContext(AuthContext)
+    const { createNewUser, setUser,updateUserProfile } = useContext(AuthContext);
+    const [error, setError] = useState({});
+    const naveget =useNavigate()
 
-    const hendleRegister =(e) =>{
+    const hendleRegister = (e) => {
         e.preventDefault()
         // const name =e.target.name.value;
         // const email =e.target.email.value;
@@ -13,22 +15,32 @@ const Register = () => {
         // const password =e.target.password.value;
         // console.log(name,email,photoURL,password)
 
-        const form =new FormData(e.target);
-        const name =form.get('name')
-        const email =form.get('email')
-        const photoURL =form.get('photoURL')
-        const password =form.get('password');
-        console.log({name,email,photoURL,password});
+        const form = new FormData(e.target);
+        const name = form.get('name');
+        if (name.length < 5) {
+            setError({ ...error, name: 'most be 5 carecter' });
+            return;
+        }
+        const email = form.get('email')
+        const photoURL = form.get('photoURL')
+        const password = form.get('password');
+        console.log({ name, email, photoURL, password });
 
-        createNewUser(email,password)
-        .then(result =>{
-            const user =result.user
-            console.log(user);
-            setUser(user)
-        })
-        .catch(error =>{
-            console.log(error.message)
-        })
+        createNewUser(email, password)
+            .then(result => {
+                const user = result.user
+                setUser(user)
+                updateUserProfile({displayName:name,photoURL:photoURL})
+                .then(() =>{
+                    naveget('/')
+                })
+                .catch(err =>{
+                    console.log(err.message)
+                })
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
 
     }
 
@@ -43,6 +55,13 @@ const Register = () => {
                         </label>
                         <input name="name" type="text" placeholder="Enter Name" className="input input-bordered" required />
                     </div>
+                    {
+                        error.name && (
+                            <label className="label text-red-600">
+                                {error.name}
+                            </label>
+                        )
+                    }
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Photo URL</span>
